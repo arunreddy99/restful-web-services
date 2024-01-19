@@ -34,7 +34,7 @@ public class UserDaoService {
 		
 		// functional programming
 		Predicate<? super User> predicate = user -> user.getId().equals(id);
-		return users.stream().filter(predicate).findFirst().get();
+		return users.stream().filter(predicate).findFirst().orElse(null);
 		
 	}
 
@@ -45,4 +45,16 @@ public class UserDaoService {
 		return user;
 	}
 	
+	public void deleteById(int id) {
+//		for(User user: users) {
+//			if(user.getId()==id)
+//				return user;
+//		}
+//		return null;
+		
+		// functional programming
+		Predicate<? super User> predicate = user -> user.getId().equals(id);
+		users.removeIf(predicate);
+		
+	}
 }
