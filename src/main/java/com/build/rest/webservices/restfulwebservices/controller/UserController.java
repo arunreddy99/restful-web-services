@@ -43,7 +43,7 @@ public class UserController {
 		User user = service.findById(id);
 
 		if (user == null) {
-			throw new UserNotFoundException("id: "+ id);
+			throw new UserNotFoundException("User not found for id: "+ id);
 		}
 		EntityModel<User> entityModel= EntityModel.of(user);
 		WebMvcLinkBuilder link= linkTo(methodOn(this.getClass()).retriveAllUsers());
